@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+
+.container{
+ flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.header h1 {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 460px) {
+    .header {
+       flex-direction: column;
+    }
+
+    button.add-book {
+        margin: 0 auto;
+    }
+}
+
+button.add-book {
+    background-color: #000;
+    color: #fff;
+    margin-right: auto;
+}
+
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+
+    padding: 0;
+    margin-left: 20px;
+}
+
+
+.book-item {
+    display: grid;
+    grid-template-rows: 50px 20px 20px 50px 50px;
+    
+
+    box-shadow: 0 1px 10px #aaaaaa;
+    padding: 8px;
+    
+}
+
+.book-author {
+    font-size: 1.1rem;
+    color: #6b6a6a;
+    margin: 4px;
+}
+
+.book-pages {
+    font-size: 1.1rem;
+    font-weight: 600;
+
+
+}
+
+.btn {
+    align-self: center;
+
+    padding: .4rem 1rem;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    text-align: center;
+
+    border: none;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+}
+
+input[type="checkbox"] + .read-btn {
+    background-color: rgb(165, 164, 163);
+    width: 100%;
+
+
+}
+
+input[type="checkbox"] + .read-btn span.read,
+input[type="checkbox"]:checked + .read-btn span.not-read {
+    display: none;
+}
+input[type="checkbox"]:checked + .read-btn span.read,
+input[type="checkbox"] + .read-btn span.not-read {
+    display: inline;
+}
+
+input[type="checkbox"]:checked + .read-btn {
+    background-color: rgb(2, 129, 2);
+}
+
+.remove-btn {
+    background-color: rgb(216, 1, 1);
+    color: #fff;
+    width: 100%;
+
+}
+
+input#did-read {
+    appearance: auto;
+    width: 20px;
+    vertical-align: bottom;
+}
+
+input#add-book:checked ~ .modal {
+    display: block;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    right: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #aaaaaa;
+    
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+.modal-content input {
+    width: 200px;
+}
+
+
+button[type="submit"] {
+    background-color: #000;
+    color: #fff;
+    width: 70%;
+}
