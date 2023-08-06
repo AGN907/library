@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Your Library</h1>
-            <button class="btn add-book">Add Book</button>
-            <div class="modal">
-                <form id="book-form" method="post" target="/" class="modal-content">
-                    <span class="close">&times;</span>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="library">
+      <div class="header">
+        <h1>Your Library</h1>
+        <button class="btn add-book">Add Book</button>
+        <div class="modal">
+          <form id="book-form" method="post" target="/" class="modal-content">
+            <span class="close">&times;</span>
 
-                    <input name="title" placeholder="Title" required />
-               
-                    <input name="author" placeholder="Author" required/>
-                    <input name="pages" type="number" placeholder="Number of pages" />
-               
-                    <label for="did-read">
-                        Did you read it?
-                        <input name="is-read" id="did-read" type="checkbox" />
-                        
-                    </label>
-                    <button class="btn" type="submit" >Add</button>
-               
-            </form>
+            <input id="bookTitle" name="title" placeholder="Title" required />
 
-            </div>
+            <input
+              id="bookAuthor"
+              name="author"
+              placeholder="Author"
+              required
+            />
+            <input
+              id="bookPages"
+              name="pages"
+              type="number"
+              placeholder="Number of pages"
+            />
+
+            <label for="bookIsRead">
+              Did you read it?
+              <input name="is-read" id="bookIsRead" type="checkbox" />
+            </label>
+            <button class="btn submit-btn" type="submit">Add</button>
+          </form>
         </div>
-        <ul class="books">
+      </div>
 
-        </ul>
+      <ul class="books">
+        <script id="template" type="text/template">
+          {{#books}}
+          <li data-book={{id}} class="book-item">
+              <h2 class="book-title">{{title}}</h2>
+              <p class="book-author">By {{author}}</p>
+              <p class="book-pages">{{pages}} page</p>
+              {{#if isRead}}
+              <input checked type="checkbox" id="read-{{id}}" />
+              {{else}}
+              <input  type="checkbox" id="read-{{id}}" />
+              {{/if}}
+              <label for="read-{{id}}" class="btn read-btn">
+                  <span class="read">Read</span>
+                  <span class="not-read">Not Read</span>
+              </label>
+              <i class="del">X</i>
+          </li>
+          {{/books}}
+        </script>
+      </ul>
     </div>
-    
-</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="script.js"></script>
+  </body>
 </html>
