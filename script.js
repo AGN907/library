@@ -1,6 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable func-names */
 const Library = (function() {
   const myLibrary = [];
 
@@ -24,7 +21,7 @@ const Library = (function() {
     if (e.target.id.startsWith('read-')) {
       const targetIndex = e.target.parentElement.dataset.book;
       const targetBook = myLibrary[targetIndex];
-      console.log(targetIndex);
+
       targetBook.isRead = !targetBook.isRead;
       e.target.checked = targetBook.isRead;
     }
